@@ -1,5 +1,5 @@
  pipeline{
-    agent {label 'jenkins-Agent(docker)'}// المكام ال هتشتغل عليه
+    agent {label 'jenkins-Agent'}// المكام ال هتشتغل عليه
     tools{ //البرامج اللي Jenkins بيحتاجها علشان ينفذ المهام.
         jdk 'java21'
         maven 'Maven3'
