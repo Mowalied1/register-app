@@ -16,12 +16,12 @@
                 git branch:'main', credentialsId:'github', url: 'https://github.com/Mowalied1/register-app.git'
             }
         }
-        stage("build application"){
+        stage("build application"){ //يبني البرنامج
             steps{
-                sh "mvn clean package"
+                sh "mvn clean package -DskipTests"
             }
         }
-        stage("Test Application"){
+        stage("Test Application"){ // بيجربه
             steps{
                 sh "mvn test"
             }
