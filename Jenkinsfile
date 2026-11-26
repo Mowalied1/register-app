@@ -8,12 +8,12 @@
         stage ("Cleanup Workspace"){//يمسح الحاجات القديمه
 
             steps{
-                CleanWs()
+                cleanWs()
             }
         }   
         stage("Checkout from SCM"){// يسحب الكود من github 
             steps{
-                git branch:'main', credentialId:'github', url: 'https://github.com/Mowalied1/register-app.git'
+                git branch:'main', credentialsId:'github', url: 'https://github.com/Mowalied1/register-app.git'
             }
         }
         stage("build application"){
