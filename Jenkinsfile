@@ -8,7 +8,7 @@
         APP_NAME = "register-app-pipeline"
         RELEASE = "1.0.0"
         DOCKER_USER = "mohamed3047205"
-        DOCKER_PASS = credentials('dockehub')
+        DOCKER_PASS = credentials('dockerhub')
         IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
@@ -53,7 +53,7 @@
         stage("Build & push Docker Image"){
             steps{
                 script{
-                    docker.withRegistry('', 'dockehub') {//بيعمل Authentication مع Docker Hub باستخدام الـ Credentials المخزنة في Jenkins.
+                    docker.withRegistry('', 'dockerhub') {//بيعمل Authentication مع Docker Hub باستخدام الـ Credentials المخزنة في Jenkins.
                        docker_image = docker.build("${IMAGE_NAME}")//بيقرأ الـ Dockerfile ويعمل Build للـ Image ويحفظ الـ Reference بتاعها في متغير
                         docker_image.push("${IMAGE_TAG}")//بيرفع الـ Image على Docker Hub برقم الإصدار ورقم الـ Build.
                         docker_image.push('latest')//يرفع نفس الـ Image باستخدام Tag اسمه latest للإشارة للإصدار الأحدث اللي رفعته.
