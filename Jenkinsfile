@@ -29,7 +29,7 @@
         stage("SonarQube Analysis"){
             steps{
                 script{
-                    withSonarQubeEny(credentialsId:'jenkins-sonarqube-token'){
+                    withSonarQubeEnv(credentialsId:'jenkins-sonarqube-token'){
                         sh "mvn sonar:sonar"
                     }
                 }
