@@ -26,12 +26,19 @@
                 sh "mvn test"
             }
         }
-        stage("SonarQube Analysis"){
+        stage("SonarQube Analysis"){ // كود تشغيل السوناركيوب 
             steps{
                 script{
                     withSonarQubeEnv(credentialsId:'jenkins-sonarqube-token'){
                         sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"
                     }
+                }
+            }
+        }
+        stage("Quality Gate"){
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false,credentialsId: 'jenkins-sonarqube-token'
                 }
             }
         }
